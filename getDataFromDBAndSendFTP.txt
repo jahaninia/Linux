@@ -1,0 +1,8 @@
+#list File from directory and send lftp to ftp server
+nohup bash -c 'for i in /home/tgui/files/pbx/monitor/ai/inbound; do echo "$i"; echo; lftp -e "mirror -R $i/ ./$(basename $i) ;quit" -u <UserName> -p <password> <FTP Address>; done' > upload.log 2>&1 &
+
+# select outbound calls and get file from another location and copy to another 
+for i in $(mysql -sN  -h 10.10.10.2 -u tgui tgui   -p -e 'select unique_id from recordings where date_created_ts >= curdate() - interval 7 day and call_direction ="OUT" and duration>20 and to_profile_id is  null   order by date_created_ts desc limit 70' ) ; do echo $i;find /home/tgui/files/pbx/monitor/ai/ -type f -name "*$i*" -exec cp {} /home/tgui/files/pbx/monitor/ai/outbound/  \;; done
+
+# select outbound calls and get file from another location and copy to another 
+for i in $(mysql -sN  -h 10.10.10.2 -u tgui tgui   -p -e 'select unique_id from recordings where date_created_ts >= curdate() and call_direction ="IN" and duration>20 and to_profile_id is not null   order by date_created_ts desc limit 100' ) ; do echo $i;find /home/tgui/files/pbx/monitor/ai/ -type f -name "*$i*" -exec cp {} /home/tgui/files/pbx/monitor/ai/inbound/  \;; done
