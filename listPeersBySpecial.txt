@@ -1,0 +1,6 @@
+for i in $(asterisk -rx "sip show peers" | awk '{print $1}' | cut -d'/' -f1); 
+do 
+  echo "----" ; 
+  echo $i ;
+  asterisk -rx "sip show peer $i" | egrep "Useragent|Addr->IP|Def. Username"; 
+done
