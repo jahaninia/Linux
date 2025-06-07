@@ -1,7 +1,0 @@
-tar -tf <name of file>
-
-
--t, --list
-List the contents of an archive. Arguments are optional. When given, they specify the names of the members to list.
-
--f, --file=ARCHIVE Use archive file or device ARCHIVE...
