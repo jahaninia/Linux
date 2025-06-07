@@ -10,7 +10,7 @@ List the contents of an archive. Arguments are optional. When given, they specif
 
 ## extract only or same file from tar 
 
-tar -xzvf <tar file> --wildcards --no-anchored '<pattern or name file>'
+tar -xzvf \<tar file\> --wildcards --no-anchored '<pattern or name file>'
 
 -x: instructs tar to extract files.
 -f: specifies filename / tarball name.
