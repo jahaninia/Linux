@@ -10,12 +10,12 @@ List the contents of an archive. Arguments are optional. When given, they specif
 
 ## extract only or same file from tar 
 
-tar -xzvf \<tar file\> --wildcards --no-anchored '<pattern or name file>'
+tar -xzvf \<tar file\> --wildcards --no-anchored '\<pattern or name file\>'
 
--x: instructs tar to extract files.
--f: specifies filename / tarball name.
--v: Verbose (show progress while extracting files).
--j : filter archive through bzip2, use to decompress .bz2 files.
--z: filter archive through gzip, use to decompress .gz files.
---wildcards: instructs tar to treat command line arguments as globbing patterns.
---no-anchored: informs it that the patterns apply to member names after
+- -x: instructs tar to extract files.
+- -f: specifies filename / tarball name.
+- -v: Verbose (show progress while extracting files).
+- -j : filter archive through bzip2, use to decompress .bz2 files.
+- -z: filter archive through gzip, use to decompress .gz files.
+- --wildcards: instructs tar to treat command line arguments as globbing patterns.
+- --no-anchored: informs it that the patterns apply to member names after
