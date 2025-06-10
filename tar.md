@@ -1,4 +1,13 @@
 # TAR
+## Exteract to Special path
+```bash
+  tar -xzvf file.name.tar -C /path/to/directory
+```
+Or
+```bash
+  tar -xzvf file.tar --directory /path/to/directory
+```
+
 ## show content file tar
 tar -tf <name of file>
 
