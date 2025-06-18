@@ -96,3 +96,76 @@ insert_routine_pair5() {
 	(null,'support.GetNumberCustomer',$last_id,'XML-RPC','agentBridge',1,1000,1000,'http://localhost/work/queus.php','support.GetNumberCustomer','','','','TEXT',1,'','',NULL,'MySQL','','',NULL,'',1000,'PERSISTENT','',101);
   "
 }
+
+insert_routine_pair6() {
+
+  # اجرای INSERT و گرفتن ID
+  last_id=$(mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -s -N -e "
+    INSERT INTO `routines` VALUES (null,'دریافت شماره مشتری دورکاری','',101);
+    SELECT LAST_INSERT_ID();
+  ")
+
+  echo "درج شد: $routine_name → ID: $last_id"
+
+  # اجرای دستور دوم با استفاده از ID
+  mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -e "
+    INSERT INTO routine_details 
+    VALUES 
+	(null,'support.GetNumberCustomer',$last_id,'XML-RPC','agentBridge',1,1000,1000,'http://localhost/work/queus.php','support.GetNumberCustomer','','','','TEXT',1,'','',NULL,'MySQL','','',NULL,'',1000,'PERSISTENT','',101);
+  "
+}
+
+insert_routine_pair7() {
+
+  # اجرای INSERT و گرفتن ID
+  last_id=$(mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -s -N -e "
+    INSERT INTO `routines` VALUES (null,'بروزرسانی کال فایل دورکاری','',101);
+    SELECT LAST_INSERT_ID();
+  ")
+
+  echo "درج شد: $routine_name → ID: $last_id"
+
+  # اجرای دستور دوم با استفاده از ID
+  mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -e "
+    INSERT INTO routine_details 
+    VALUES 
+	(null,'support.updateCallFiles',$last_id,'XML-RPC','agentBridge',1,1000,1000,'http://localhost/work/queus.php','support.updateCallFiles','number,DIALSTATUS,CALLERID(num)','','','TEXT',1,'','',NULL,'MySQL','','',NULL,'',1000,'PERSISTENT','',101);
+  "
+}
+
+insert_routine_pair8() {
+
+  # اجرای INSERT و گرفتن ID
+  last_id=$(mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -s -N -e "
+    INSERT INTO `routines` VALUES (null,'درحال مکالمه مشتری دورکاری','',101);
+    SELECT LAST_INSERT_ID();
+  ")
+
+  echo "درج شد: $routine_name → ID: $last_id"
+
+  # اجرای دستور دوم با استفاده از ID
+  mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -e "
+    INSERT INTO routine_details 
+    VALUES 
+	(null,'support.flgCustomer',$last_id,'XML-RPC','agentBridge',1,1000,1000,'http://localhost/work/queus.php','support.flgCustomer','number','','','TEXT',1,'','',NULL,'MySQL','','',NULL,'',1000,'PERSISTENT','',101);
+  "
+}
+
+insert_routine_pair9() {
+
+  # اجرای INSERT و گرفتن ID
+  last_id=$(mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -s -N -e "
+    INSERT INTO `routines` VALUES (null,'دورکاری - صف شخصی','',101);
+;
+    SELECT LAST_INSERT_ID();
+  ")
+
+  echo "درج شد: $routine_name → ID: $last_id"
+
+  # اجرای دستور دوم با استفاده از ID
+  mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -e "
+    INSERT INTO routine_details 
+    VALUES 
+	(null,'support.getMyQueue',$last_id,'XML-RPC','agentBridge',1,1000,1000,'http://localhost/work/queus.php','support.getMyQueue','queueNumber','','','TEXT',1,'','',NULL,'MySQL','','',NULL,'',1000,'PERSISTENT','',101);
+  "
+}
