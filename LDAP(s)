@@ -1,2 +1,0 @@
-# check Ldaps
-ldapsearch -H ldaps://<IP DC>:636   -D "<Username>"   -w '<Pass>'   -b "<base oy>"   -x -LLL "(objectClass=*)" 
