@@ -22,6 +22,10 @@ update-ca-trust extract
 ```
 ## ldap test
 ### if strings with strart '<' and end '>' is replace with data valid 
+
+ldapsearch -H ldaps://<IP DC>:636   -D "<Username>"   -w '<Pass>'   -b "<base oy>"   -x -LLL "(objectClass=*)" 
+
+
 ```bash
 ldapsearch -H ldaps://<IP or dns record Domain controller>   -D "<user with `@doman`>"   -w "<password>"   -b "DC=<domain>,DC=<local>"
 ```
